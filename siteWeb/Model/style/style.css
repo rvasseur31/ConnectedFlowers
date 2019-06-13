@@ -1,0 +1,56 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.container-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    height: 100%;
+    width: 40vw;
+}
+
+.card-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input[type="button"] {
+    color: whitesmoke;
+}
+
+/* Remove the blue border when the button is clicked */
+
+.waves-button-input {
+    outline: 0 solid transparent;
+}
+
+/* Animation error */
+
+.error {
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 3;
+}
+
+@keyframes shake {
+    0% {
+        left: -10px;
+    }
+    100% {
+        right: -10px;
+    }
+}

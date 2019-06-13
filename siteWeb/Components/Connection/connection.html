@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Connexion</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./connection.css">
+    <link type="text/css" rel="stylesheet" href="../../Model/style/style.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="container-card container col s10 offset-s1">
+            <div class="card grey lighten-3">
+                <div class="card-content black-text center">
+                    <span class="card-title">Connexion</span>
+                </div>
+                <div class="card-content black-text center">
+                    <form>
+                        <div>
+                            <input type="email" id="email-Connection" name="email" placeholder="Entrer votre email">
+                            <span id="email-not-exist-Connection">L'email n'existe pas</span>
+                            <input type="password" id="password-Connection" name="password"
+                                placeholder="Entrez votre mot de passe">
+                            <br>
+                            <label style='float: right;'>
+                                <a id="forgot-password-Connection" class='black-text'
+                                    onclick='ForgotPasswordEmail(document.getElementById(`email-Connection`).value);'><b>Mot
+                                        de passe oublié?</b></a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <div class="card-action">
+                    <input type="button" id="sign-up-Connection" class="btn waves-effect brown lighten-1"
+                        value="Inscription">
+                    <input type="button" id="sign-in-Connection" class="btn waves-effect brown lighten-1"
+                        value="Connexion">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+
+    <!-- Models -->
+    <script src="../../Model/ConfigFirebase.js"></script>
+    <script src="../../Model/functionsError/showTextErrorMessage.js"></script>
+    <script src="../../Model/functionsError/shakeInput.js"></script>
+
+    <!-- Services -->
+    <script src="../../Services/SendEmails/ForgotPasswordEmail.js"></script>
+
+    <!-- Classes -->
+    <script src="./connection.js"></script>
+</body>
+
+</html>

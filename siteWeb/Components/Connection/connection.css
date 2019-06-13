@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#email-not-exist-Connection{
+    color: red;
+    display: none;
+}
+
+#forgot-password-Connection{
+    background-color: transparent;
+    outline: 0 solid transparent;
+}

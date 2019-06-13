@@ -1,0 +1,7 @@
+nodeJs/node_modules
+nodeJS/build
+nodeJS/Models/admin-config.json
+nodeJS/Models/firebase-config.json
+nodeJS/npm-debug.log
+nodeJS/.env
+nodeJS/.DS_Store

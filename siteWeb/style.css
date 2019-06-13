@@ -1,0 +1,65 @@
+.action {
+    position: fixed;
+    bottom: 10px;
+    width: calc(100% - 2 * 24px);
+}
+
+.card img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+#show-list-flowers {
+    margin-top: 20px;
+}
+
+/* Modal */
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #8d6e63;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #8d6e63;
+}
+
+input[type=range]::-ms-thumb {
+    background-color: #8d6e63;
+}
+
+/***** These are to edit the thumb and the text inside the thumb *****/
+
+input[type=range]+.thumb {
+    background-color: white;
+}
+
+input[type=range]+.thumb.active .value {
+    color: #8d6e63;
+}
+
+input[type=range] {
+    border: none;
+    margin: 0;
+}
+
+div.row {
+    margin: 0;
+}
+
+input[type="button"] {
+    color: white !important;
+}
+
+img.logo {
+    height: 50px !important;
+    margin-left: 20px;
+}
+
+#login, #when-login {
+    display: none;
+}
+
+.chart-container {
+    position: relative;
+    width: 50vw !important;
+}

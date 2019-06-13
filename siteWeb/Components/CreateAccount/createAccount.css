@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#email-taken-SignUp{
+    color: red;
+    display: none;
+}
+
+#password-too-short-SignUp{
+    color: red;
+    display: none;
+}

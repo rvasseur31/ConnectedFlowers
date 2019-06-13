@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Création de compte</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./createAccount.css">
+    <link type="text/css" rel="stylesheet" href="../../Model/style/style.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="container-card container col s10 offset-s1">
+            <div class="card grey lighten-3">
+                <div class="card-content black-text center">
+                    <span class="card-title">Inscription</span>
+                </div>
+                <div class="card-content black-text center">
+                    <form>
+                        <div>
+                            <input type="email" id="email-SignUp" name="email" placeholder="Entrer votre email">
+                            <span id="email-taken-SignUp">Email déjà pris</span>
+                            <input type="password" id="password-SignUp" name="password"
+                                placeholder="Entrez votre mot de passe">
+                            <input type="password" id="password-confirm-SignUp" name="passwordConfirm"
+                                placeholder="Confirmez votre mot de passe">
+                            <span id="password-too-short-SignUp">Le mot de passe est trop court, il faut 6 caractères
+                                minimum</span>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-action">
+                    <input type="button" id="sign-in-SignUp" class="btn waves-effect brown lighten-1" value="Connexion">
+                    <input type="button" id="sign-up-SignUp" class="btn waves-effect brown lighten-1"
+                        value="Inscription">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+
+    <!-- Models -->
+    <script src="../../Model/ConfigFirebase.js"></script>
+    <script src="../../Model/functionsError/borderRedInput.js"></script>
+    <script src="../../Model/functionsError/showTextErrorMessage.js"></script>
+    <script src="../../Model/functionsError/shakeInput.js"></script>
+
+    <!-- Services -->
+    <script src="../../Services/SendEmails/VerificationEmail.js"></script>
+
+    <!-- Classes -->
+    <script src="./createAccount.js"></script>
+</body>
+
+</html>

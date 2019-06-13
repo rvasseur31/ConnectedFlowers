@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>ConnectedFlower</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="add-Flower" class="modal">
+        <div class="modal-content">
+            <form>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" class="input-name-flower" placeholder="Nom de la plante">
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" class="input-category-flower" placeholder="Catégorie de la plante">
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea input-description-flower"
+                            placeholder="Description de la plante"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <select id="select-start-flowering-period-flower">
+                                <option value="1">Janvier</option>
+                                <option value="2">Février</option>
+                                <option value="3">Mars</option>
+                                <option value="4">Avril</option>
+                                <option value="5">Mai</option>
+                                <option value="6">Juin</option>
+                                <option value="7">Juillet</option>
+                                <option value="8">Août</option>
+                                <option value="9">Septembre</option>
+                                <option value="10">Octobre</option>
+                                <option value="11">Novembre</option>
+                                <option value="12">Décembre</option>
+                            </select>
+                            <label>Début de la période de floraison</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="select-end-flowering-period-flower">
+                                <option value="1">Janvier</option>
+                                <option value="2">Février</option>
+                                <option value="3">Mars</option>
+                                <option value="4">Avril</option>
+                                <option value="5">Mai</option>
+                                <option value="6">Juin</option>
+                                <option value="7">Juillet</option>
+                                <option value="8">Août</option>
+                                <option value="9">Septembre</option>
+                                <option value="10">Octobre</option>
+                                <option value="11">Novembre</option>
+                                <option value="12">Décembre</option>
+                            </select>
+                            <label>Fin de la période de floraison</label>
+                        </div>
+                    </div>
+                    <form action="#">
+                        <div>
+                            <p class="left">Luminosité :</p>
+                            <p class="range-field">
+                                <input type="range" class="range-luminosity-flower" min="0" max="100" />
+                            </p>
+                        </div>
+                        <div>
+                            <p class="left">Humidité :</p>
+                            <p class="range-field">
+                                <input type="range" class="range-humidity-flower" min="0" max="100" />
+                            </p>
+                        </div>
+                        <div>
+                            <p class="left">Température :</p>
+                            <p class="range-field">
+                                <input type="range" class="range-temperature-flower" min="0" max="40" />
+                            </p>
+                        </div>
+                    </form>
+                    <div class="file-field input-field">
+                        <div class="btn brown lighten-1">
+                            <span class="action-btn-img-flower"></span>
+                            <input type="file" id="get-image">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input type="button" id="action-btn-flower" class="modal-close btn waves-effect brown lighten-1">
+        </div>
+    </div>
+    <div id="confim-delete" class="modal">
+        <div class="modal-content">
+            <h2>Suppression de la plante</h2>
+            <p>Vous êtes sur le point de supprimer la plante, voulez-vous continuer ?</p>
+        </div>
+        <div class="modal-footer">
+            <input type="button" id="confim-delete-yes-btn" class="modal-close btn waves-effect brown lighten-1" value="Confimer">
+        </div>
+    </div>
+    <div class="navbar-fixed">
+        <nav class="grey lighten-3">
+            <div class="nav-wrapper">
+                <a href="" class="left brand-logo"><img class="logo" src="./assets/img/logo.png" alt="Logo"></a>
+                <ul class="right" id="login">
+                    <li><a class="black-text" href="./Components/CreateAccount/createAccount.html">Inscription</a></li>
+                    <li><a class="black-text" href="./Components/Connection/connection.html">Connexion</a></li>
+                </ul>
+                <ul class="right" id="when-login">
+                    <li><a class="black-text modal-trigger" onclick="preAddFlower();" data-target="add-Flower">Ajouter une plante<i
+                                class="material-icons right">add</i></a></li>
+                    <li><a onclick="logout();" class="black-text" id="logout">Déconnexion<i
+                                class="material-icons right">exit_to_app</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <div class="row" id="show-list-flowers"></div>
+
+    <!-- Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+
+    <!-- Models -->
+    <script src="./Model/ConfigFirebase.js"></script>
+    <script src="./Model/ShowFlowers.js"></script>
+    <script src="./Model/Flower.js"></script>
+
+    <!-- Services -->
+    <script src="./Services/WriteFirebase/updateFlower.js"></script>
+    <script src="./Services/WriteFirebase/deleteFlower.js"></script>
+    <script src="./Services/ReadFirebase/getElementsFromFirebaseOfTheUser.js"></script>
+    <script src="./Services/Login/loginOrNot.js"></script>
+    <script src="./Services/Login/logout.js"></script>
+    <script src="./Services/WriteFirebase/addFlower.js"></script>
+    <script src="./Services/WriteFirebase/addImage.js"></script>
+    <script src="./Services/WriteFirebase/setCurrentFlower.js"></script>
+
+    <!-- Classes -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
+
+
+
+    <!-- <div id="update-Flower" class="modal">
+        <div class="modal-content">
+            <form>
+                <div>
+                    <input type="text" id="name" class="input-name-flower" name="title" value="">
+                    <textarea id="description" class="materialize-textarea input-description-flower"></textarea>
+                </div>
+                <form action="#">
+                    <div>
+                        <p class="left">Luminosité :</p>
+                        <p class="range-field">
+                            <input type="range" class="range-luminosity-flower" id="luminosity" min="0" max="100"
+                                value="" />
+                        </p>
+                    </div>
+                    <div>
+                        <p class="left">Humidité :</p>
+                        <p class="range-field">
+                            <input type="range" class="range-humidity-flower" id="humidity" min="0" max="100"
+                                value="" />
+                        </p>
+                    </div>
+                    <div>
+                        <p class="left">Température :</p>
+                        <p class="range-field">
+                            <input type="range" class="range-temperature-flower" id="temperature" min="0" max="40"
+                                value="" />
+                        </p>
+                    </div>
+                </form>
+                <div class="file-field input-field">
+                    <div class="btn brown lighten-1">
+                        <span>Modifier l'image</span>
+                        <input type="file" id="get-image">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input type="button" class="modal-close btn waves-effect brown lighten-1 update-btn" value="Modifier">
+        </div>
+    </div> -->
