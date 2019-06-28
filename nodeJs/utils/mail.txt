@@ -132,7 +132,7 @@
                       style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
                       <div
                         style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:24px;line-height:1;text-align:left;color:#000000;">
-                        Attention, les conditions de votre plante ne sont pas optimal. Allez vous occuper de votre
+                        Attention, les conditions de votre plante ne sont pas optimales. Allez vous occuper de votre
                         plante avant qu'elle ne meurt. </div>
                     </td>
                   </tr>

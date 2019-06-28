@@ -1,15 +1,5 @@
 /**
  * 
- * @param {*} userId 
- * @param {*} name 
- * @param {*} catergory 
- * @param {*} description 
- * @param {*} startFloweringPeriod 
- * @param {*} endFloweringPeriod 
- * @param {*} luminosity 
- * @param {*} humidity 
- * @param {*} temperature 
- * @param {*} inputImage 
  */
 async function addFlower() {
     let name = $('.input-name-flower').val();
@@ -37,4 +27,14 @@ function preAddFlower(){
     $('#action-btn-flower').attr('onclick', 'addFlower();');
     $('#action-btn-flower').val('Ajouter');
     $('.action-btn-img-flower').html('Ajouter une image');
+    $('.input-name-flower').val("");
+    $('.input-category-flower').val("");
+    $('.input-description-flower').val("");
+    $('#select-start-flowering-period-flower').val(1);
+    $('#select-end-flowering-period-flower').val(1);
+    $('select').formSelect();
+    $('.range-luminosity-flower').val("");
+    $('.range-humidity-flower').val("");
+    $('.range-temperature-flower').val("");
+    M.updateTextFields();
   }

@@ -11,7 +11,6 @@ module.exports = {
                 module.exports.addIdUserConfig(user.uid)
                 module.exports.configureStarterPackPlant("Flowers", user.uid, require('../Models/list-plant.json'));
             }).catch(function (e) {
-                console.log("Utilisateur existant");
                 if (userConfig.uid === undefined) {
                     admin.auth().getUserByEmail(userConfig.email)
                         .then(function (userRecord) {
@@ -44,9 +43,9 @@ module.exports = {
         const ref = admin.database().ref(userConfig.id + '/CurrentsFlower/0/');
         await ref.orderByValue().once("value", async function (snapshot) {
             const ref = admin.database().ref(userConfig.id + '/Flowers/' + JSON.stringify(snapshot.val()).replace(/"/g, ''));
-            await ref.orderByValue().once("value", function (snapshot) {
+            await ref.orderByValue().once("value", async function (snapshot) {
                 console.log(snapshot.val());
-                fs.writeFile('./files/current-flower.json', JSON.stringify(snapshot.val()), function (err) {
+                await fs.writeFile('./files/current-flower.json', JSON.stringify(snapshot.val()), function (err) {
                     if (err) console.log(err);
                 });
             });
@@ -54,6 +53,7 @@ module.exports = {
     },
     checkData: (data) => {
         let dataCurrentFlower = require('../files/current-flower.json');
+        dataCurrentFlower = JSON.parse(JSON.stringify(dataCurrentFlower));
         for (let key in data) {
             if (key != "Time") {
                 if (data[key] > dataCurrentFlower["optimal" + key] + (module.exports.getMaxValue(key) / 10)) {
