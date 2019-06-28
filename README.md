@@ -35,3 +35,8 @@ Nous vous livrerons un produit fonctionelle, il suffira uniquement d'éditer le 
 
 * **Jérémy Escobar** - [JEscobar31](https://github.com/jescobar31)
 * **Raphaël Vasseur** - [RVASSEUR31](https://github.com/rvasseur31)
+
+## Test
+### Account
+Email : root2@gmail.com
+Password : root31
